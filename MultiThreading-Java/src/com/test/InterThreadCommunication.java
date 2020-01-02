@@ -16,6 +16,7 @@ public class InterThreadCommunication {
     public static void main(String[] args) {
         CompletableFuture.runAsync(() -> InterThreadCommunication.runJob(oddSelector));
         CompletableFuture.runAsync(() -> InterThreadCommunication.runJob(evenSelector));
+        Thread.currentThread().sleep(1000);
     }
 
     private static void runJob(IntPredicate selector) {
