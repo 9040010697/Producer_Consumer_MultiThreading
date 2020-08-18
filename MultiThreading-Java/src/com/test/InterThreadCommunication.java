@@ -13,7 +13,7 @@ public class InterThreadCommunication {
     private static IntPredicate oddSelector = e -> e % 2 != 0;
     private static Integer[] range = { 1, 11 };
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         CompletableFuture.runAsync(() -> InterThreadCommunication.runJob(oddSelector));
         CompletableFuture.runAsync(() -> InterThreadCommunication.runJob(evenSelector));
         Thread.currentThread().sleep(1000);
