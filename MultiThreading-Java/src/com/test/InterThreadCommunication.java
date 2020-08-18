@@ -9,14 +9,14 @@ public class InterThreadCommunication {
 
     private static Object lockObject = new Object();
 
-    private static IntPredicate evenSelector = e -> e % 2 == 0;
-    private static IntPredicate oddSelector = e -> e % 2 != 0;
-    private static Integer[] range = { 1, 11 };
+    private static final IntPredicate evenSelector = e -> e % 2 == 0;
+    private static final IntPredicate oddSelector = e -> e % 2 != 0;
+    private static final Integer[] range = { 1, 11 };
 
     public static void main(String[] args) throws Exception {
         CompletableFuture.runAsync(() -> InterThreadCommunication.runJob(oddSelector));
         CompletableFuture.runAsync(() -> InterThreadCommunication.runJob(evenSelector));
-        Thread.currentThread().sleep(1000);
+        Thread.sleep(1000);
     }
 
     private static void runJob(IntPredicate selector) {
@@ -35,3 +35,4 @@ public class InterThreadCommunication {
         }
     }
 }
+
